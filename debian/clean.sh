@@ -17,8 +17,6 @@ echo '' > ${ROOTFS}/etc/resolv.conf
 
 echo -e "auto lo\niface lo inet loopback" > ${ROOTFS}/etc/network/interfaces
 
-rm -f ${ROOTFS}/etc/ssh/*key*
-
 log 'cleaning up dhcp leases'
 rm -f ${ROOTFS}/var/lib/dhcp/*
 
