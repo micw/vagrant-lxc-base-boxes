@@ -15,12 +15,9 @@ rm -rf ${ROOTFS}/tmp/*
 log 'removing nameserver settings'
 echo '' > ${ROOTFS}/etc/resolv.conf
 
-log 'adding script ${ROOTFS}/root/disable_dhcp_client.sh to disable dhcp'
-cat <<EOF > ${ROOTFS}/root/disable_dhcp_client.sh
-#!/bin/bash
-echo -e "auto lo\niface lo inet loopback" > /etc/network/interfaces
-EOF
-chmod 0700 ${ROOTFS}/root/disable_dhcp_client.sh
+echo -e "auto lo\niface lo inet loopback" > ${ROOTFS}/etc/network/interfaces
+
+rm -f ${ROOTFS}/etc/ssh/*key*
 
 log 'cleaning up dhcp leases'
 rm -f ${ROOTFS}/var/lib/dhcp/*
